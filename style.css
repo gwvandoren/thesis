@@ -1,0 +1,124 @@
+body {
+  font-family: Optima;
+  background-color: black;
+}
+
+h1{
+  color:white;
+  text-align: center;
+  font-size: 60px;
+}
+
+/* #typedtext{
+  color: #ac1a2f;
+  text-align: center;
+  font-size: 60px;
+} */
+
+p {
+  margin: 0;
+  display: inline-block;
+  font-family: Optima;
+  text-decoration: none;
+  font-size: 60px;
+  color: #ac1a2f;
+}
+
+#typewriter {
+  font-size: 2em;
+  width:100%;
+  font-family: "Optima";
+}
+
+#typewriter:after {
+  content: "|";
+  font-size: 2em;
+  font-family: "Optima";
+  color: #ac1a2f;
+  -webkit-animation: blink 500ms linear infinite alternate;
+          animation: blink 500ms linear infinite alternate;
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width:100%;
+  text-align:center;
+}
+
+.navbar {
+  background-color: black;
+  text-align:center;
+  top: 50%;
+  left: 50%;
+  width:100%;
+}
+
+.navbar a {
+  font-size: 25px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #ac1a2f;
+}
+
+.dropbtn {
+  background-color:black;
+  color: white;
+  padding: 14px;
+  font-size: 25px;
+  border: none;
+  font-family: Optima;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display:none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  font-size: 20px;
+  min-width: 100%;
+  box-shadow: 0px 4px 16px 4px rgba(172, 172, 172, 0.5);
+  z-index: 1;
+  text-align:center;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #dedede;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: #ac1a2f;}

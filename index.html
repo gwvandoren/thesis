@@ -1,15 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <p> welcome to my thesis </p>
-  <button onclick="window.location.href='thesisTLDR.html'"> my thesis tldr </button>
-  <a href="thesis.pdf"> <p> read my thesis </p> </a>
 
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title> gvd's thesis</title>
+  </head>
+
+  <body>
+
+    <div class="content">
+
+      <pre id="typewriter">
+      <p class="center">My Fellow Wildcat and Watcher:</p>
+      <p>The Relationship Between Surveillance</p>
+      <p>and Community at Davidson College</p></pre>
+
+      <div class="navbar">
+        <a href="thesis.pdf" target="_blank"> read my thesis</a>
+        <a href="thesisPoster.pdf" target="_blank"> thesis tl;dr </a>
+
+        <div class="dropdown">
+          <button class="dropbtn">davidson surveillance practices
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="https://www.digitalprojects.davidson.edu/ahohc/" target="_blank">honor code: reimagining the <br>
+              honor code</a>
+            <a href="https://gwvandoren.github.io/dig345-p2/" target="_blank">catcards: watching wildcats </a>
+            <a href="#" target="_blank">campus police: <br> abolition resources</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+
 </html>
+
+<script>
+
+  function setupTypewriter(t) {
+    var HTML = t.innerHTML;
+
+    t.innerHTML = "";
+
+    var cursorPosition = 0,
+      tag = "",
+      writingTag = false,
+      tagOpen = false,
+      typeSpeed = 45, // higher number = slower
+      tempTypeSpeed = 0;
+
+    var type = function () {
+
+      if (writingTag === true) {
+        tag += HTML[cursorPosition];
+      }
+
+      if (HTML[cursorPosition] === "<") {
+        tempTypeSpeed = 0;
+        if (tagOpen) {
+          tagOpen = false;
+          writingTag = true;
+        } else {
+          tag = "";
+          tagOpen = true;
+          writingTag = true;
+          tag += HTML[cursorPosition];
+        }
+      }
+
+      if (!writingTag && tagOpen) {
+        tag.innerHTML += HTML[cursorPosition];
+      }
+
+      if (!writingTag && !tagOpen) {
+        if (HTML[cursorPosition] === " ") {
+          tempTypeSpeed = 0;
+        }
+        else {
+          tempTypeSpeed = (Math.random() * typeSpeed) + 50;
+        }
+        t.innerHTML += HTML[cursorPosition];
+      }
+      if (writingTag === true && HTML[cursorPosition] === ">") {
+        tempTypeSpeed = (Math.random() * typeSpeed) + 50;
+        writingTag = false;
+        if (tagOpen) {
+          var newSpan = document.createElement("span");
+          t.appendChild(newSpan);
+          newSpan.innerHTML = tag;
+          tag = newSpan.firstChild;
+        }
+      }
+
+      cursorPosition += 1;
+      if (cursorPosition < HTML.length - 1) {
+        setTimeout(type, tempTypeSpeed);
+      }
+
+    };
+
+    return {
+      type: type
+    };
+  }
+
+  var typer = document.getElementById('typewriter');
+  typewriter = setupTypewriter(typewriter);
+  typewriter.type();
+
+
+</script>
